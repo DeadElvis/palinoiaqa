@@ -110,17 +110,16 @@ first child of the left and right table columns */
     width: 100%;
     height: 50px;
 }
-.header h1
-{
-    font-weight: 700;
-    margin: 0px;
-    padding: 0px 0px 0px 20px;
-    color: #f9f9f9;
-    border: none;
-    line-height: 2em;
-    font-size: 2em;
-    
-}
+    .header h1 {
+        font-weight: 700;
+        margin: 0px;
+        padding: 0px 0px 0px 20px;
+        /*color: #f9f9f9;*/
+        color: #000000;
+        border: none;
+        line-height: 2em;
+        font-size: 2em;
+    }
 
 .main
 {
@@ -342,17 +341,15 @@ div.accountInfo
     display: block;
     text-align: right;
     padding: 10px;
-    color: White;
+    color: black;
 }
 
-.loginDisplay a:link
-{
-    color: white;
+.loginDisplay a:link {
+    color: black;
 }
 
-.loginDisplay a:visited
-{
-    color: white;
+.loginDisplay a:visited {
+    color: black;
 }
 
 .loginDisplay a:hover
