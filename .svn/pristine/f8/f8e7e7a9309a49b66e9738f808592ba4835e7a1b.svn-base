@@ -1,0 +1,2017 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PalinoiaModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\palinoiadb\Palinoia\Palinoia.s3db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BusinessRule_Sections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_BusinessRuleID" Type="integer" Nullable="false" />
+          <Property Name="fk_SectionID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BusinessRules">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fk_StatusID" Type="integer" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="fk_SectionID" Type="integer" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BusinessRules_CustomerServiceMessages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_BusinessRulesID" Type="integer" Nullable="false" />
+          <Property Name="fk_CustomerServiceMessagesID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chapters">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_ChapterTypeID" Type="integer" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerServiceMessage_Sections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_CustomerServiceMessageID" Type="integer" Nullable="false" />
+          <Property Name="fk_SectionID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerServiceMessages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fk_StatusID" Type="integer" Nullable="false" />
+          <Property Name="fk_CSMTypeID" Type="integer" Nullable="false" />
+          <Property Name="fk_CSMResponseTypeID" Type="integer" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="fk_SectionID" Type="integer" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Defect_BusinessRules">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_DefectID" Type="integer" Nullable="false" />
+          <Property Name="fk_BusinessRuleID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Defect_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_DefectID" Type="integer" Nullable="false" />
+          <Property Name="UserID" Type="integer" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Defect_CustomerServiceMessages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_DefectID" Type="integer" Nullable="false" />
+          <Property Name="fk_CustomerServiceMessageID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Defect_TestCases">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_DefectID" Type="integer" Nullable="false" />
+          <Property Name="fk_TestCaseID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Defects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_DefectPriorityID" Type="integer" Nullable="false" />
+          <Property Name="fk_DefectStatusID" Type="integer" Nullable="false" />
+          <Property Name="fk_DefectTypeID" Type="integer" Nullable="false" />
+          <Property Name="OwnerID" Type="integer" />
+          <Property Name="DefectName" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateCompleted" Type="datetime" />
+          <Property Name="Closed" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document_Chapters">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeqNum" Type="integer" Nullable="false" />
+          <Property Name="fk_DocumentID" Type="integer" Nullable="false" />
+          <Property Name="fk_ChapterID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentImages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Documents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_DocumentType" Type="integer" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_PalinoiaObjectID" Type="integer" />
+          <Property Name="RecordID" Type="integer" />
+          <Property Name="fk_PalinoiaFieldID" Type="integer" />
+          <Property Name="Action" Type="varchar" MaxLength="1" />
+          <Property Name="OldValue" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="NewValue" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="UserID_UpdatedBy" Type="integer" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="lkup_ChapterType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_CSMResponseType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_CSMType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_DefectPriority">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+          <Property Name="Importance" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_DefectStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_DefectType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_DocumentType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IncludeBRCSMSummaryTable" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_PalinoiaFields">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_PalinoiaObjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEXT" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="lkup_SearchDataTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_SearchObjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_SearchTypeID" Type="integer" Nullable="false" />
+          <Property Name="fk_SearchDataTypeID" Type="integer" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="SearchColumn" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="ResultDisplayPriority" Type="integer" />
+          <Property Name="XREF_Table" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="lkup_SearchOperators">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_SearchTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_Sections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Abbreviation" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DisplayInChapterSummary" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_TestStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEXT" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SQLITEADMIN_QUERIES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" Nullable="false" />
+          <Property Name="NAME" Type="varchar" MaxLength="100" />
+          <Property Name="SQL" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="TestCase_BusinessRules">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_TestCaseID" Type="integer" Nullable="false" />
+          <Property Name="fk_BusinessRuleID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestCase_Documents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_TestCaseID" Type="integer" Nullable="false" />
+          <Property Name="fk_DocumentID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestCase_PreConditions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_TestCaseID" Type="integer" Nullable="false" />
+          <Property Name="PreConditionTestCaseID" Type="integer" Nullable="false" />
+          <Property Name="SeqNum" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestCase_TestSteps">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SeqNum" Type="integer" Nullable="false" />
+          <Property Name="fk_TestCaseID" Type="integer" Nullable="false" />
+          <Property Name="fk_TestStepID" Type="integer" Nullable="false" />
+          <Property Name="Notes" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TestCases">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_lkup_SectionID" Type="integer" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+          <Property Name="fk_TestStatusID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestResults">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_TestCaseID" Type="integer" Nullable="false" />
+          <Property Name="fk_TestStepID" Type="integer" Nullable="false" />
+          <Property Name="fk_TestStatusID" Type="integer" Nullable="false" />
+          <Property Name="UserID" Type="integer" Nullable="false" />
+          <Property Name="TestDate" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="failedBusinessRuleID" Type="integer" />
+        </EntityType>
+        <EntityType Name="TestStep_BusinessRules">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_TestStepID" Type="integer" Nullable="false" />
+          <Property Name="fk_BusinessRuleID" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestSteps">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UpdatedBy" Type="integer" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BusinessRule_Sections_0_0">
+          <End Role="lkup_Sections" Type="Self.lkup_Sections" Multiplicity="1" />
+          <End Role="BusinessRule_Sections" Type="Self.BusinessRule_Sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkup_Sections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BusinessRule_Sections">
+              <PropertyRef Name="fk_SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessRule_Sections_1_0">
+          <End Role="BusinessRules" Type="Self.BusinessRules" Multiplicity="1" />
+          <End Role="BusinessRule_Sections" Type="Self.BusinessRule_Sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BusinessRule_Sections">
+              <PropertyRef Name="fk_BusinessRuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessRules_CustomerServiceMessages_0_0">
+          <End Role="CustomerServiceMessages" Type="Self.CustomerServiceMessages" Multiplicity="1" />
+          <End Role="BusinessRules_CustomerServiceMessages" Type="Self.BusinessRules_CustomerServiceMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerServiceMessages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BusinessRules_CustomerServiceMessages">
+              <PropertyRef Name="fk_CustomerServiceMessagesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessRules_CustomerServiceMessages_1_0">
+          <End Role="BusinessRules" Type="Self.BusinessRules" Multiplicity="1" />
+          <End Role="BusinessRules_CustomerServiceMessages" Type="Self.BusinessRules_CustomerServiceMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BusinessRules_CustomerServiceMessages">
+              <PropertyRef Name="fk_BusinessRulesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerServiceMessage_Sections_0_0">
+          <End Role="lkup_Sections" Type="Self.lkup_Sections" Multiplicity="1" />
+          <End Role="CustomerServiceMessage_Sections" Type="Self.CustomerServiceMessage_Sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkup_Sections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerServiceMessage_Sections">
+              <PropertyRef Name="fk_SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerServiceMessage_Sections_1_0">
+          <End Role="CustomerServiceMessages" Type="Self.CustomerServiceMessages" Multiplicity="1" />
+          <End Role="CustomerServiceMessage_Sections" Type="Self.CustomerServiceMessage_Sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerServiceMessages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerServiceMessage_Sections">
+              <PropertyRef Name="fk_CustomerServiceMessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_BusinessRules_0_0">
+          <End Role="BusinessRules" Type="Self.BusinessRules" Multiplicity="1" />
+          <End Role="Defect_BusinessRules" Type="Self.Defect_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_BusinessRules">
+              <PropertyRef Name="fk_BusinessRuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_BusinessRules_1_0">
+          <End Role="Defects" Type="Self.Defects" Multiplicity="1" />
+          <End Role="Defect_BusinessRules" Type="Self.Defect_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defects">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_BusinessRules">
+              <PropertyRef Name="fk_DefectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_Comments_0_0">
+          <End Role="Defects" Type="Self.Defects" Multiplicity="1" />
+          <End Role="Defect_Comments" Type="Self.Defect_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defects">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_Comments">
+              <PropertyRef Name="fk_DefectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_CustomerServiceMessages_0_0">
+          <End Role="CustomerServiceMessages" Type="Self.CustomerServiceMessages" Multiplicity="1" />
+          <End Role="Defect_CustomerServiceMessages" Type="Self.Defect_CustomerServiceMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerServiceMessages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_CustomerServiceMessages">
+              <PropertyRef Name="fk_CustomerServiceMessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_CustomerServiceMessages_1_0">
+          <End Role="Defects" Type="Self.Defects" Multiplicity="1" />
+          <End Role="Defect_CustomerServiceMessages" Type="Self.Defect_CustomerServiceMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defects">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_CustomerServiceMessages">
+              <PropertyRef Name="fk_DefectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_TestCases_0_0">
+          <End Role="TestCases" Type="Self.TestCases" Multiplicity="1" />
+          <End Role="Defect_TestCases" Type="Self.Defect_TestCases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_TestCases">
+              <PropertyRef Name="fk_TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_TestCases_1_0">
+          <End Role="Defects" Type="Self.Defects" Multiplicity="1" />
+          <End Role="Defect_TestCases" Type="Self.Defect_TestCases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defects">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_TestCases">
+              <PropertyRef Name="fk_DefectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_BusinessRules_0_0">
+          <End Role="BusinessRules" Type="Self.BusinessRules" Multiplicity="1" />
+          <End Role="TestCase_BusinessRules" Type="Self.TestCase_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_BusinessRules">
+              <PropertyRef Name="fk_BusinessRuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_BusinessRules_1_0">
+          <End Role="TestCases" Type="Self.TestCases" Multiplicity="1" />
+          <End Role="TestCase_BusinessRules" Type="Self.TestCase_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_BusinessRules">
+              <PropertyRef Name="fk_TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_Documents_0_0">
+          <End Role="Documents" Type="Self.Documents" Multiplicity="1" />
+          <End Role="TestCase_Documents" Type="Self.TestCase_Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_Documents">
+              <PropertyRef Name="fk_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_Documents_1_0">
+          <End Role="TestCases" Type="Self.TestCases" Multiplicity="1" />
+          <End Role="TestCase_Documents" Type="Self.TestCase_Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_Documents">
+              <PropertyRef Name="fk_TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_PreConditions_0_0">
+          <End Role="TestCases" Type="Self.TestCases" Multiplicity="1" />
+          <End Role="TestCase_PreConditions" Type="Self.TestCase_PreConditions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_PreConditions">
+              <PropertyRef Name="fk_TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCases_0_0">
+          <End Role="lkup_TestStatus" Type="Self.lkup_TestStatus" Multiplicity="1" />
+          <End Role="TestCases" Type="Self.TestCases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkup_TestStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCases">
+              <PropertyRef Name="fk_TestStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestStep_BusinessRules_0_0">
+          <End Role="TestSteps" Type="Self.TestSteps" Multiplicity="1" />
+          <End Role="TestStep_BusinessRules" Type="Self.TestStep_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestSteps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestStep_BusinessRules">
+              <PropertyRef Name="fk_TestStepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestStep_BusinessRules_1_0">
+          <End Role="BusinessRules" Type="Self.BusinessRules" Multiplicity="1" />
+          <End Role="TestStep_BusinessRules" Type="Self.TestStep_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestStep_BusinessRules">
+              <PropertyRef Name="fk_BusinessRuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PalinoiaModelStoreContainer">
+          <EntitySet Name="BusinessRule_Sections" EntityType="Self.BusinessRule_Sections" store:Type="Tables" />
+          <EntitySet Name="BusinessRules" EntityType="Self.BusinessRules" store:Type="Tables" />
+          <EntitySet Name="BusinessRules_CustomerServiceMessages" EntityType="Self.BusinessRules_CustomerServiceMessages" store:Type="Tables" />
+          <EntitySet Name="Chapters" EntityType="Self.Chapters" store:Type="Tables" />
+          <EntitySet Name="CustomerServiceMessage_Sections" EntityType="Self.CustomerServiceMessage_Sections" store:Type="Tables" />
+          <EntitySet Name="CustomerServiceMessages" EntityType="Self.CustomerServiceMessages" store:Type="Tables" />
+          <EntitySet Name="Defect_BusinessRules" EntityType="Self.Defect_BusinessRules" store:Type="Tables" />
+          <EntitySet Name="Defect_Comments" EntityType="Self.Defect_Comments" store:Type="Tables" />
+          <EntitySet Name="Defect_CustomerServiceMessages" EntityType="Self.Defect_CustomerServiceMessages" store:Type="Tables" />
+          <EntitySet Name="Defect_TestCases" EntityType="Self.Defect_TestCases" store:Type="Tables" />
+          <EntitySet Name="Defects" EntityType="Self.Defects" store:Type="Tables" />
+          <EntitySet Name="Document_Chapters" EntityType="Self.Document_Chapters" store:Type="Tables" />
+          <EntitySet Name="DocumentImages" EntityType="Self.DocumentImages" store:Type="Tables" />
+          <EntitySet Name="Documents" EntityType="Self.Documents" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" store:Type="Tables" />
+          <EntitySet Name="lkup_ChapterType" EntityType="Self.lkup_ChapterType" store:Type="Tables" />
+          <EntitySet Name="lkup_CSMResponseType" EntityType="Self.lkup_CSMResponseType" store:Type="Tables" />
+          <EntitySet Name="lkup_CSMType" EntityType="Self.lkup_CSMType" store:Type="Tables" />
+          <EntitySet Name="lkup_DefectPriority" EntityType="Self.lkup_DefectPriority" store:Type="Tables" />
+          <EntitySet Name="lkup_DefectStatus" EntityType="Self.lkup_DefectStatus" store:Type="Tables" />
+          <EntitySet Name="lkup_DefectType" EntityType="Self.lkup_DefectType" store:Type="Tables" />
+          <EntitySet Name="lkup_DocumentType" EntityType="Self.lkup_DocumentType" store:Type="Tables" />
+          <EntitySet Name="lkup_PalinoiaFields" EntityType="Self.lkup_PalinoiaFields" store:Type="Tables" />
+          <EntitySet Name="lkup_PalinoiaObjects" EntityType="Self.lkup_PalinoiaObjects" store:Type="Tables" />
+          <EntitySet Name="lkup_SearchDataTypes" EntityType="Self.lkup_SearchDataTypes" store:Type="Tables" />
+          <EntitySet Name="lkup_SearchObjects" EntityType="Self.lkup_SearchObjects" store:Type="Tables" />
+          <EntitySet Name="lkup_SearchOperators" EntityType="Self.lkup_SearchOperators" store:Type="Tables" />
+          <EntitySet Name="lkup_SearchTypes" EntityType="Self.lkup_SearchTypes" store:Type="Tables" />
+          <EntitySet Name="lkup_Sections" EntityType="Self.lkup_Sections" store:Type="Tables" />
+          <EntitySet Name="lkup_Status" EntityType="Self.lkup_Status" store:Type="Tables" />
+          <EntitySet Name="lkup_TestStatus" EntityType="Self.lkup_TestStatus" store:Type="Tables" />
+          <EntitySet Name="SQLITEADMIN_QUERIES" EntityType="Self.SQLITEADMIN_QUERIES" store:Type="Tables" />
+          <EntitySet Name="TestCase_BusinessRules" EntityType="Self.TestCase_BusinessRules" store:Type="Tables" />
+          <EntitySet Name="TestCase_Documents" EntityType="Self.TestCase_Documents" store:Type="Tables" />
+          <EntitySet Name="TestCase_PreConditions" EntityType="Self.TestCase_PreConditions" store:Type="Tables" />
+          <EntitySet Name="TestCase_TestSteps" EntityType="Self.TestCase_TestSteps" store:Type="Tables" />
+          <EntitySet Name="TestCases" EntityType="Self.TestCases" store:Type="Tables" />
+          <EntitySet Name="TestResults" EntityType="Self.TestResults" store:Type="Tables" />
+          <EntitySet Name="TestStep_BusinessRules" EntityType="Self.TestStep_BusinessRules" store:Type="Tables" />
+          <EntitySet Name="TestSteps" EntityType="Self.TestSteps" store:Type="Tables" />
+          <AssociationSet Name="FK_BusinessRule_Sections_0_0" Association="Self.FK_BusinessRule_Sections_0_0">
+            <End Role="lkup_Sections" EntitySet="lkup_Sections" />
+            <End Role="BusinessRule_Sections" EntitySet="BusinessRule_Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessRule_Sections_1_0" Association="Self.FK_BusinessRule_Sections_1_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="BusinessRule_Sections" EntitySet="BusinessRule_Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessRules_CustomerServiceMessages_0_0" Association="Self.FK_BusinessRules_CustomerServiceMessages_0_0">
+            <End Role="CustomerServiceMessages" EntitySet="CustomerServiceMessages" />
+            <End Role="BusinessRules_CustomerServiceMessages" EntitySet="BusinessRules_CustomerServiceMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessRules_CustomerServiceMessages_1_0" Association="Self.FK_BusinessRules_CustomerServiceMessages_1_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="BusinessRules_CustomerServiceMessages" EntitySet="BusinessRules_CustomerServiceMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerServiceMessage_Sections_0_0" Association="Self.FK_CustomerServiceMessage_Sections_0_0">
+            <End Role="lkup_Sections" EntitySet="lkup_Sections" />
+            <End Role="CustomerServiceMessage_Sections" EntitySet="CustomerServiceMessage_Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerServiceMessage_Sections_1_0" Association="Self.FK_CustomerServiceMessage_Sections_1_0">
+            <End Role="CustomerServiceMessages" EntitySet="CustomerServiceMessages" />
+            <End Role="CustomerServiceMessage_Sections" EntitySet="CustomerServiceMessage_Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_BusinessRules_0_0" Association="Self.FK_Defect_BusinessRules_0_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="Defect_BusinessRules" EntitySet="Defect_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_BusinessRules_1_0" Association="Self.FK_Defect_BusinessRules_1_0">
+            <End Role="Defects" EntitySet="Defects" />
+            <End Role="Defect_BusinessRules" EntitySet="Defect_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_Comments_0_0" Association="Self.FK_Defect_Comments_0_0">
+            <End Role="Defects" EntitySet="Defects" />
+            <End Role="Defect_Comments" EntitySet="Defect_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_CustomerServiceMessages_0_0" Association="Self.FK_Defect_CustomerServiceMessages_0_0">
+            <End Role="CustomerServiceMessages" EntitySet="CustomerServiceMessages" />
+            <End Role="Defect_CustomerServiceMessages" EntitySet="Defect_CustomerServiceMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_CustomerServiceMessages_1_0" Association="Self.FK_Defect_CustomerServiceMessages_1_0">
+            <End Role="Defects" EntitySet="Defects" />
+            <End Role="Defect_CustomerServiceMessages" EntitySet="Defect_CustomerServiceMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_TestCases_0_0" Association="Self.FK_Defect_TestCases_0_0">
+            <End Role="TestCases" EntitySet="TestCases" />
+            <End Role="Defect_TestCases" EntitySet="Defect_TestCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_TestCases_1_0" Association="Self.FK_Defect_TestCases_1_0">
+            <End Role="Defects" EntitySet="Defects" />
+            <End Role="Defect_TestCases" EntitySet="Defect_TestCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_BusinessRules_0_0" Association="Self.FK_TestCase_BusinessRules_0_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="TestCase_BusinessRules" EntitySet="TestCase_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_BusinessRules_1_0" Association="Self.FK_TestCase_BusinessRules_1_0">
+            <End Role="TestCases" EntitySet="TestCases" />
+            <End Role="TestCase_BusinessRules" EntitySet="TestCase_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_Documents_0_0" Association="Self.FK_TestCase_Documents_0_0">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="TestCase_Documents" EntitySet="TestCase_Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_Documents_1_0" Association="Self.FK_TestCase_Documents_1_0">
+            <End Role="TestCases" EntitySet="TestCases" />
+            <End Role="TestCase_Documents" EntitySet="TestCase_Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_PreConditions_0_0" Association="Self.FK_TestCase_PreConditions_0_0">
+            <End Role="TestCases" EntitySet="TestCases" />
+            <End Role="TestCase_PreConditions" EntitySet="TestCase_PreConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCases_0_0" Association="Self.FK_TestCases_0_0">
+            <End Role="lkup_TestStatus" EntitySet="lkup_TestStatus" />
+            <End Role="TestCases" EntitySet="TestCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestStep_BusinessRules_0_0" Association="Self.FK_TestStep_BusinessRules_0_0">
+            <End Role="TestSteps" EntitySet="TestSteps" />
+            <End Role="TestStep_BusinessRules" EntitySet="TestStep_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestStep_BusinessRules_1_0" Association="Self.FK_TestStep_BusinessRules_1_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="TestStep_BusinessRules" EntitySet="TestStep_BusinessRules" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PalinoiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BusinessRule_Sections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_BusinessRuleID" Type="Int64" Nullable="false" />
+          <Property Name="fk_SectionID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="lkup_Sections" Relationship="Self.FK_BusinessRule_Sections_0_0" FromRole="BusinessRule_Sections" ToRole="lkup_Sections" />
+          <NavigationProperty Name="BusinessRule" Relationship="Self.FK_BusinessRule_Sections_1_0" FromRole="BusinessRule_Sections" ToRole="BusinessRules" />
+        </EntityType>
+        <EntityType Name="BusinessRule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fk_StatusID" Type="Int64" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="fk_SectionID" Type="Int64" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="BusinessRule_Sections" Relationship="Self.FK_BusinessRule_Sections_1_0" FromRole="BusinessRules" ToRole="BusinessRule_Sections" />
+          <NavigationProperty Name="BusinessRules_CustomerServiceMessages" Relationship="Self.FK_BusinessRules_CustomerServiceMessages_1_0" FromRole="BusinessRules" ToRole="BusinessRules_CustomerServiceMessages" />
+          <NavigationProperty Name="Defect_BusinessRules" Relationship="Self.FK_Defect_BusinessRules_0_0" FromRole="BusinessRules" ToRole="Defect_BusinessRules" />
+          <NavigationProperty Name="TestCase_BusinessRules" Relationship="Self.FK_TestCase_BusinessRules_0_0" FromRole="BusinessRules" ToRole="TestCase_BusinessRules" />
+          <NavigationProperty Name="TestStep_BusinessRules" Relationship="Self.FK_TestStep_BusinessRules_1_0" FromRole="BusinessRules" ToRole="TestStep_BusinessRules" />
+        </EntityType>
+        <EntityType Name="BusinessRules_CustomerServiceMessages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_BusinessRulesID" Type="Int64" Nullable="false" />
+          <Property Name="fk_CustomerServiceMessagesID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="BusinessRule" Relationship="Self.FK_BusinessRules_CustomerServiceMessages_1_0" FromRole="BusinessRules_CustomerServiceMessages" ToRole="BusinessRules" />
+          <NavigationProperty Name="CustomerServiceMessage" Relationship="Self.FK_BusinessRules_CustomerServiceMessages_0_0" FromRole="BusinessRules_CustomerServiceMessages" ToRole="CustomerServiceMessages" />
+        </EntityType>
+        <EntityType Name="Chapter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_ChapterTypeID" Type="Int64" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerServiceMessage_Sections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_CustomerServiceMessageID" Type="Int64" Nullable="false" />
+          <Property Name="fk_SectionID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="lkup_Sections" Relationship="Self.FK_CustomerServiceMessage_Sections_0_0" FromRole="CustomerServiceMessage_Sections" ToRole="lkup_Sections" />
+          <NavigationProperty Name="CustomerServiceMessage" Relationship="Self.FK_CustomerServiceMessage_Sections_1_0" FromRole="CustomerServiceMessage_Sections" ToRole="CustomerServiceMessages" />
+        </EntityType>
+        <EntityType Name="CustomerServiceMessage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fk_StatusID" Type="Int64" Nullable="false" />
+          <Property Name="fk_CSMTypeID" Type="Int64" Nullable="false" />
+          <Property Name="fk_CSMResponseTypeID" Type="Int64" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fk_SectionID" Type="Int64" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="BusinessRules_CustomerServiceMessages" Relationship="Self.FK_BusinessRules_CustomerServiceMessages_0_0" FromRole="CustomerServiceMessages" ToRole="BusinessRules_CustomerServiceMessages" />
+          <NavigationProperty Name="CustomerServiceMessage_Sections" Relationship="Self.FK_CustomerServiceMessage_Sections_1_0" FromRole="CustomerServiceMessages" ToRole="CustomerServiceMessage_Sections" />
+          <NavigationProperty Name="Defect_CustomerServiceMessages" Relationship="Self.FK_Defect_CustomerServiceMessages_0_0" FromRole="CustomerServiceMessages" ToRole="Defect_CustomerServiceMessages" />
+        </EntityType>
+        <EntityType Name="Defect_BusinessRules">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_DefectID" Type="Int64" Nullable="false" />
+          <Property Name="fk_BusinessRuleID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="BusinessRule" Relationship="Self.FK_Defect_BusinessRules_0_0" FromRole="Defect_BusinessRules" ToRole="BusinessRules" />
+          <NavigationProperty Name="Defect" Relationship="Self.FK_Defect_BusinessRules_1_0" FromRole="Defect_BusinessRules" ToRole="Defects" />
+        </EntityType>
+        <EntityType Name="Defect_Comments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_DefectID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Defect" Relationship="Self.FK_Defect_Comments_0_0" FromRole="Defect_Comments" ToRole="Defects" />
+        </EntityType>
+        <EntityType Name="Defect_CustomerServiceMessages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_DefectID" Type="Int64" Nullable="false" />
+          <Property Name="fk_CustomerServiceMessageID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="CustomerServiceMessage" Relationship="Self.FK_Defect_CustomerServiceMessages_0_0" FromRole="Defect_CustomerServiceMessages" ToRole="CustomerServiceMessages" />
+          <NavigationProperty Name="Defect" Relationship="Self.FK_Defect_CustomerServiceMessages_1_0" FromRole="Defect_CustomerServiceMessages" ToRole="Defects" />
+        </EntityType>
+        <EntityType Name="Defect_TestCases">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_DefectID" Type="Int64" Nullable="false" />
+          <Property Name="fk_TestCaseID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="TestCas" Relationship="Self.FK_Defect_TestCases_0_0" FromRole="Defect_TestCases" ToRole="TestCases" />
+          <NavigationProperty Name="Defect" Relationship="Self.FK_Defect_TestCases_1_0" FromRole="Defect_TestCases" ToRole="Defects" />
+        </EntityType>
+        <EntityType Name="Defect">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_DefectPriorityID" Type="Int64" Nullable="false" />
+          <Property Name="fk_DefectStatusID" Type="Int64" Nullable="false" />
+          <Property Name="fk_DefectTypeID" Type="Int64" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="DefectName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" />
+          <Property Name="DateCompleted" Type="DateTime" />
+          <Property Name="Closed" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Defect_BusinessRules" Relationship="Self.FK_Defect_BusinessRules_1_0" FromRole="Defects" ToRole="Defect_BusinessRules" />
+          <NavigationProperty Name="Defect_Comments" Relationship="Self.FK_Defect_Comments_0_0" FromRole="Defects" ToRole="Defect_Comments" />
+          <NavigationProperty Name="Defect_CustomerServiceMessages" Relationship="Self.FK_Defect_CustomerServiceMessages_1_0" FromRole="Defects" ToRole="Defect_CustomerServiceMessages" />
+          <NavigationProperty Name="Defect_TestCases" Relationship="Self.FK_Defect_TestCases_1_0" FromRole="Defects" ToRole="Defect_TestCases" />
+        </EntityType>
+        <EntityType Name="Document_Chapters">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeqNum" Type="Int64" Nullable="false" />
+          <Property Name="fk_DocumentID" Type="Int64" Nullable="false" />
+          <Property Name="fk_ChapterID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocumentImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_DocumentType" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="TestCase_Documents" Relationship="Self.FK_TestCase_Documents_0_0" FromRole="Documents" ToRole="TestCase_Documents" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_PalinoiaObjectID" Type="Int64" />
+          <Property Name="RecordID" Type="Int64" />
+          <Property Name="fk_PalinoiaFieldID" Type="Int64" />
+          <Property Name="Action" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="OldValue" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="NewValue" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="UserID_UpdatedBy" Type="Int64" />
+          <Property Name="DateUpdated" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="lkup_ChapterType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_CSMResponseType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_CSMType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_DefectPriority">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+          <Property Name="Importance" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_DefectStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_DefectType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_DocumentType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="IncludeBRCSMSummaryTable" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_PalinoiaFields">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_PalinoiaObjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEXT" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="lkup_SearchDataTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_SearchObjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_SearchTypeID" Type="Int64" Nullable="false" />
+          <Property Name="fk_SearchDataTypeID" Type="Int64" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SearchColumn" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResultDisplayPriority" Type="Int64" />
+          <Property Name="XREF_Table" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="lkup_SearchOperators">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_SearchTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_Sections">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Abbreviation" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="BusinessRule_Sections" Relationship="Self.FK_BusinessRule_Sections_0_0" FromRole="lkup_Sections" ToRole="BusinessRule_Sections" />
+          <NavigationProperty Name="CustomerServiceMessage_Sections" Relationship="Self.FK_CustomerServiceMessage_Sections_0_0" FromRole="lkup_Sections" ToRole="CustomerServiceMessage_Sections" />
+        </EntityType>
+        <EntityType Name="lkup_Status">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DisplayInChapterSummary" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="lkup_TestStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEXT" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TestCases" Relationship="Self.FK_TestCases_0_0" FromRole="lkup_TestStatus" ToRole="TestCases" />
+        </EntityType>
+        <EntityType Name="SQLITEADMIN_QUERIES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SQL" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TestCase_BusinessRules">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_TestCaseID" Type="Int64" Nullable="false" />
+          <Property Name="fk_BusinessRuleID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="BusinessRule" Relationship="Self.FK_TestCase_BusinessRules_0_0" FromRole="TestCase_BusinessRules" ToRole="BusinessRules" />
+          <NavigationProperty Name="TestCas" Relationship="Self.FK_TestCase_BusinessRules_1_0" FromRole="TestCase_BusinessRules" ToRole="TestCases" />
+        </EntityType>
+        <EntityType Name="TestCase_Documents">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_TestCaseID" Type="Int64" Nullable="false" />
+          <Property Name="fk_DocumentID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Document" Relationship="Self.FK_TestCase_Documents_0_0" FromRole="TestCase_Documents" ToRole="Documents" />
+          <NavigationProperty Name="TestCas" Relationship="Self.FK_TestCase_Documents_1_0" FromRole="TestCase_Documents" ToRole="TestCases" />
+        </EntityType>
+        <EntityType Name="TestCase_PreConditions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_TestCaseID" Type="Int64" Nullable="false" />
+          <Property Name="PreConditionTestCaseID" Type="Int64" Nullable="false" />
+          <Property Name="SeqNum" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="TestCas" Relationship="Self.FK_TestCase_PreConditions_0_0" FromRole="TestCase_PreConditions" ToRole="TestCases" />
+        </EntityType>
+        <EntityType Name="TestCase_TestSteps">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SeqNum" Type="Int64" Nullable="false" />
+          <Property Name="fk_TestCaseID" Type="Int64" Nullable="false" />
+          <Property Name="fk_TestStepID" Type="Int64" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TestCas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_lkup_SectionID" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+          <Property Name="fk_TestStatusID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Defect_TestCases" Relationship="Self.FK_Defect_TestCases_0_0" FromRole="TestCases" ToRole="Defect_TestCases" />
+          <NavigationProperty Name="lkup_TestStatus" Relationship="Self.FK_TestCases_0_0" FromRole="TestCases" ToRole="lkup_TestStatus" />
+          <NavigationProperty Name="TestCase_BusinessRules" Relationship="Self.FK_TestCase_BusinessRules_1_0" FromRole="TestCases" ToRole="TestCase_BusinessRules" />
+          <NavigationProperty Name="TestCase_Documents" Relationship="Self.FK_TestCase_Documents_1_0" FromRole="TestCases" ToRole="TestCase_Documents" />
+          <NavigationProperty Name="TestCase_PreConditions" Relationship="Self.FK_TestCase_PreConditions_0_0" FromRole="TestCases" ToRole="TestCase_PreConditions" />
+        </EntityType>
+        <EntityType Name="TestResult">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_TestCaseID" Type="Int64" Nullable="false" />
+          <Property Name="fk_TestStepID" Type="Int64" Nullable="false" />
+          <Property Name="fk_TestStatusID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int64" Nullable="false" />
+          <Property Name="TestDate" Type="DateTime" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="failedBusinessRuleID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="TestStep_BusinessRules">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_TestStepID" Type="Int64" Nullable="false" />
+          <Property Name="fk_BusinessRuleID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="BusinessRule" Relationship="Self.FK_TestStep_BusinessRules_1_0" FromRole="TestStep_BusinessRules" ToRole="BusinessRules" />
+          <NavigationProperty Name="TestStep" Relationship="Self.FK_TestStep_BusinessRules_0_0" FromRole="TestStep_BusinessRules" ToRole="TestSteps" />
+        </EntityType>
+        <EntityType Name="TestStep">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="TestStep_BusinessRules" Relationship="Self.FK_TestStep_BusinessRules_0_0" FromRole="TestSteps" ToRole="TestStep_BusinessRules" />
+        </EntityType>
+        <Association Name="FK_BusinessRule_Sections_0_0">
+          <End Role="lkup_Sections" Type="Self.lkup_Sections" Multiplicity="1" />
+          <End Role="BusinessRule_Sections" Type="Self.BusinessRule_Sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkup_Sections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BusinessRule_Sections">
+              <PropertyRef Name="fk_SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessRule_Sections_1_0">
+          <End Role="BusinessRules" Type="Self.BusinessRule" Multiplicity="1" />
+          <End Role="BusinessRule_Sections" Type="Self.BusinessRule_Sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BusinessRule_Sections">
+              <PropertyRef Name="fk_BusinessRuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessRules_CustomerServiceMessages_1_0">
+          <End Role="BusinessRules" Type="Self.BusinessRule" Multiplicity="1" />
+          <End Role="BusinessRules_CustomerServiceMessages" Type="Self.BusinessRules_CustomerServiceMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BusinessRules_CustomerServiceMessages">
+              <PropertyRef Name="fk_BusinessRulesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_BusinessRules_0_0">
+          <End Role="BusinessRules" Type="Self.BusinessRule" Multiplicity="1" />
+          <End Role="Defect_BusinessRules" Type="Self.Defect_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_BusinessRules">
+              <PropertyRef Name="fk_BusinessRuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_BusinessRules_0_0">
+          <End Role="BusinessRules" Type="Self.BusinessRule" Multiplicity="1" />
+          <End Role="TestCase_BusinessRules" Type="Self.TestCase_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_BusinessRules">
+              <PropertyRef Name="fk_BusinessRuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestStep_BusinessRules_1_0">
+          <End Role="BusinessRules" Type="Self.BusinessRule" Multiplicity="1" />
+          <End Role="TestStep_BusinessRules" Type="Self.TestStep_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessRules">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestStep_BusinessRules">
+              <PropertyRef Name="fk_BusinessRuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessRules_CustomerServiceMessages_0_0">
+          <End Role="CustomerServiceMessages" Type="Self.CustomerServiceMessage" Multiplicity="1" />
+          <End Role="BusinessRules_CustomerServiceMessages" Type="Self.BusinessRules_CustomerServiceMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerServiceMessages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BusinessRules_CustomerServiceMessages">
+              <PropertyRef Name="fk_CustomerServiceMessagesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerServiceMessage_Sections_0_0">
+          <End Role="lkup_Sections" Type="Self.lkup_Sections" Multiplicity="1" />
+          <End Role="CustomerServiceMessage_Sections" Type="Self.CustomerServiceMessage_Sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkup_Sections">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerServiceMessage_Sections">
+              <PropertyRef Name="fk_SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerServiceMessage_Sections_1_0">
+          <End Role="CustomerServiceMessages" Type="Self.CustomerServiceMessage" Multiplicity="1" />
+          <End Role="CustomerServiceMessage_Sections" Type="Self.CustomerServiceMessage_Sections" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerServiceMessages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerServiceMessage_Sections">
+              <PropertyRef Name="fk_CustomerServiceMessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_CustomerServiceMessages_0_0">
+          <End Role="CustomerServiceMessages" Type="Self.CustomerServiceMessage" Multiplicity="1" />
+          <End Role="Defect_CustomerServiceMessages" Type="Self.Defect_CustomerServiceMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerServiceMessages">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_CustomerServiceMessages">
+              <PropertyRef Name="fk_CustomerServiceMessageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_BusinessRules_1_0">
+          <End Role="Defects" Type="Self.Defect" Multiplicity="1" />
+          <End Role="Defect_BusinessRules" Type="Self.Defect_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defects">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_BusinessRules">
+              <PropertyRef Name="fk_DefectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_Comments_0_0">
+          <End Role="Defects" Type="Self.Defect" Multiplicity="1" />
+          <End Role="Defect_Comments" Type="Self.Defect_Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defects">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_Comments">
+              <PropertyRef Name="fk_DefectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_CustomerServiceMessages_1_0">
+          <End Role="Defects" Type="Self.Defect" Multiplicity="1" />
+          <End Role="Defect_CustomerServiceMessages" Type="Self.Defect_CustomerServiceMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defects">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_CustomerServiceMessages">
+              <PropertyRef Name="fk_DefectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_TestCases_0_0">
+          <End Role="TestCases" Type="Self.TestCas" Multiplicity="1" />
+          <End Role="Defect_TestCases" Type="Self.Defect_TestCases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_TestCases">
+              <PropertyRef Name="fk_TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Defect_TestCases_1_0">
+          <End Role="Defects" Type="Self.Defect" Multiplicity="1" />
+          <End Role="Defect_TestCases" Type="Self.Defect_TestCases" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Defects">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Defect_TestCases">
+              <PropertyRef Name="fk_DefectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_Documents_0_0">
+          <End Role="Documents" Type="Self.Document" Multiplicity="1" />
+          <End Role="TestCase_Documents" Type="Self.TestCase_Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Documents">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_Documents">
+              <PropertyRef Name="fk_DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCases_0_0">
+          <End Role="lkup_TestStatus" Type="Self.lkup_TestStatus" Multiplicity="1" />
+          <End Role="TestCases" Type="Self.TestCas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lkup_TestStatus">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCases">
+              <PropertyRef Name="fk_TestStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_BusinessRules_1_0">
+          <End Role="TestCases" Type="Self.TestCas" Multiplicity="1" />
+          <End Role="TestCase_BusinessRules" Type="Self.TestCase_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_BusinessRules">
+              <PropertyRef Name="fk_TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_Documents_1_0">
+          <End Role="TestCases" Type="Self.TestCas" Multiplicity="1" />
+          <End Role="TestCase_Documents" Type="Self.TestCase_Documents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_Documents">
+              <PropertyRef Name="fk_TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestCase_PreConditions_0_0">
+          <End Role="TestCases" Type="Self.TestCas" Multiplicity="1" />
+          <End Role="TestCase_PreConditions" Type="Self.TestCase_PreConditions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestCases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestCase_PreConditions">
+              <PropertyRef Name="fk_TestCaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestStep_BusinessRules_0_0">
+          <End Role="TestSteps" Type="Self.TestStep" Multiplicity="1" />
+          <End Role="TestStep_BusinessRules" Type="Self.TestStep_BusinessRules" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestSteps">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TestStep_BusinessRules">
+              <PropertyRef Name="fk_TestStepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PalinoiaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BusinessRule_Sections" EntityType="Self.BusinessRule_Sections" />
+          <EntitySet Name="BusinessRules" EntityType="Self.BusinessRule" />
+          <EntitySet Name="BusinessRules_CustomerServiceMessages" EntityType="Self.BusinessRules_CustomerServiceMessages" />
+          <EntitySet Name="Chapters" EntityType="Self.Chapter" />
+          <EntitySet Name="CustomerServiceMessage_Sections" EntityType="Self.CustomerServiceMessage_Sections" />
+          <EntitySet Name="CustomerServiceMessages" EntityType="Self.CustomerServiceMessage" />
+          <EntitySet Name="Defect_BusinessRules" EntityType="Self.Defect_BusinessRules" />
+          <EntitySet Name="Defect_Comments" EntityType="Self.Defect_Comments" />
+          <EntitySet Name="Defect_CustomerServiceMessages" EntityType="Self.Defect_CustomerServiceMessages" />
+          <EntitySet Name="Defect_TestCases" EntityType="Self.Defect_TestCases" />
+          <EntitySet Name="Defects" EntityType="Self.Defect" />
+          <EntitySet Name="Document_Chapters" EntityType="Self.Document_Chapters" />
+          <EntitySet Name="DocumentImages" EntityType="Self.DocumentImage" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="Histories" EntityType="Self.History" />
+          <EntitySet Name="lkup_ChapterType" EntityType="Self.lkup_ChapterType" />
+          <EntitySet Name="lkup_CSMResponseType" EntityType="Self.lkup_CSMResponseType" />
+          <EntitySet Name="lkup_CSMType" EntityType="Self.lkup_CSMType" />
+          <EntitySet Name="lkup_DefectPriority" EntityType="Self.lkup_DefectPriority" />
+          <EntitySet Name="lkup_DefectStatus" EntityType="Self.lkup_DefectStatus" />
+          <EntitySet Name="lkup_DefectType" EntityType="Self.lkup_DefectType" />
+          <EntitySet Name="lkup_DocumentType" EntityType="Self.lkup_DocumentType" />
+          <EntitySet Name="lkup_PalinoiaFields" EntityType="Self.lkup_PalinoiaFields" />
+          <EntitySet Name="lkup_PalinoiaObjects" EntityType="Self.lkup_PalinoiaObjects" />
+          <EntitySet Name="lkup_SearchDataTypes" EntityType="Self.lkup_SearchDataTypes" />
+          <EntitySet Name="lkup_SearchObjects" EntityType="Self.lkup_SearchObjects" />
+          <EntitySet Name="lkup_SearchOperators" EntityType="Self.lkup_SearchOperators" />
+          <EntitySet Name="lkup_SearchTypes" EntityType="Self.lkup_SearchTypes" />
+          <EntitySet Name="lkup_Sections" EntityType="Self.lkup_Sections" />
+          <EntitySet Name="lkup_Status" EntityType="Self.lkup_Status" />
+          <EntitySet Name="lkup_TestStatus" EntityType="Self.lkup_TestStatus" />
+          <EntitySet Name="SQLITEADMIN_QUERIES" EntityType="Self.SQLITEADMIN_QUERIES" />
+          <EntitySet Name="TestCase_BusinessRules" EntityType="Self.TestCase_BusinessRules" />
+          <EntitySet Name="TestCase_Documents" EntityType="Self.TestCase_Documents" />
+          <EntitySet Name="TestCase_PreConditions" EntityType="Self.TestCase_PreConditions" />
+          <EntitySet Name="TestCase_TestSteps" EntityType="Self.TestCase_TestSteps" />
+          <EntitySet Name="TestCases" EntityType="Self.TestCas" />
+          <EntitySet Name="TestResults" EntityType="Self.TestResult" />
+          <EntitySet Name="TestStep_BusinessRules" EntityType="Self.TestStep_BusinessRules" />
+          <EntitySet Name="TestSteps" EntityType="Self.TestStep" />
+          <AssociationSet Name="FK_BusinessRule_Sections_0_0" Association="Self.FK_BusinessRule_Sections_0_0">
+            <End Role="lkup_Sections" EntitySet="lkup_Sections" />
+            <End Role="BusinessRule_Sections" EntitySet="BusinessRule_Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessRule_Sections_1_0" Association="Self.FK_BusinessRule_Sections_1_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="BusinessRule_Sections" EntitySet="BusinessRule_Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessRules_CustomerServiceMessages_1_0" Association="Self.FK_BusinessRules_CustomerServiceMessages_1_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="BusinessRules_CustomerServiceMessages" EntitySet="BusinessRules_CustomerServiceMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_BusinessRules_0_0" Association="Self.FK_Defect_BusinessRules_0_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="Defect_BusinessRules" EntitySet="Defect_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_BusinessRules_0_0" Association="Self.FK_TestCase_BusinessRules_0_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="TestCase_BusinessRules" EntitySet="TestCase_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestStep_BusinessRules_1_0" Association="Self.FK_TestStep_BusinessRules_1_0">
+            <End Role="BusinessRules" EntitySet="BusinessRules" />
+            <End Role="TestStep_BusinessRules" EntitySet="TestStep_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessRules_CustomerServiceMessages_0_0" Association="Self.FK_BusinessRules_CustomerServiceMessages_0_0">
+            <End Role="CustomerServiceMessages" EntitySet="CustomerServiceMessages" />
+            <End Role="BusinessRules_CustomerServiceMessages" EntitySet="BusinessRules_CustomerServiceMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerServiceMessage_Sections_0_0" Association="Self.FK_CustomerServiceMessage_Sections_0_0">
+            <End Role="lkup_Sections" EntitySet="lkup_Sections" />
+            <End Role="CustomerServiceMessage_Sections" EntitySet="CustomerServiceMessage_Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerServiceMessage_Sections_1_0" Association="Self.FK_CustomerServiceMessage_Sections_1_0">
+            <End Role="CustomerServiceMessages" EntitySet="CustomerServiceMessages" />
+            <End Role="CustomerServiceMessage_Sections" EntitySet="CustomerServiceMessage_Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_CustomerServiceMessages_0_0" Association="Self.FK_Defect_CustomerServiceMessages_0_0">
+            <End Role="CustomerServiceMessages" EntitySet="CustomerServiceMessages" />
+            <End Role="Defect_CustomerServiceMessages" EntitySet="Defect_CustomerServiceMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_BusinessRules_1_0" Association="Self.FK_Defect_BusinessRules_1_0">
+            <End Role="Defects" EntitySet="Defects" />
+            <End Role="Defect_BusinessRules" EntitySet="Defect_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_Comments_0_0" Association="Self.FK_Defect_Comments_0_0">
+            <End Role="Defects" EntitySet="Defects" />
+            <End Role="Defect_Comments" EntitySet="Defect_Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_CustomerServiceMessages_1_0" Association="Self.FK_Defect_CustomerServiceMessages_1_0">
+            <End Role="Defects" EntitySet="Defects" />
+            <End Role="Defect_CustomerServiceMessages" EntitySet="Defect_CustomerServiceMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_TestCases_0_0" Association="Self.FK_Defect_TestCases_0_0">
+            <End Role="TestCases" EntitySet="TestCases" />
+            <End Role="Defect_TestCases" EntitySet="Defect_TestCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Defect_TestCases_1_0" Association="Self.FK_Defect_TestCases_1_0">
+            <End Role="Defects" EntitySet="Defects" />
+            <End Role="Defect_TestCases" EntitySet="Defect_TestCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_Documents_0_0" Association="Self.FK_TestCase_Documents_0_0">
+            <End Role="Documents" EntitySet="Documents" />
+            <End Role="TestCase_Documents" EntitySet="TestCase_Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCases_0_0" Association="Self.FK_TestCases_0_0">
+            <End Role="lkup_TestStatus" EntitySet="lkup_TestStatus" />
+            <End Role="TestCases" EntitySet="TestCases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_BusinessRules_1_0" Association="Self.FK_TestCase_BusinessRules_1_0">
+            <End Role="TestCases" EntitySet="TestCases" />
+            <End Role="TestCase_BusinessRules" EntitySet="TestCase_BusinessRules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_Documents_1_0" Association="Self.FK_TestCase_Documents_1_0">
+            <End Role="TestCases" EntitySet="TestCases" />
+            <End Role="TestCase_Documents" EntitySet="TestCase_Documents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestCase_PreConditions_0_0" Association="Self.FK_TestCase_PreConditions_0_0">
+            <End Role="TestCases" EntitySet="TestCases" />
+            <End Role="TestCase_PreConditions" EntitySet="TestCase_PreConditions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestStep_BusinessRules_0_0" Association="Self.FK_TestStep_BusinessRules_0_0">
+            <End Role="TestSteps" EntitySet="TestSteps" />
+            <End Role="TestStep_BusinessRules" EntitySet="TestStep_BusinessRules" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PalinoiaModelStoreContainer" CdmEntityContainer="PalinoiaEntities">
+          <EntitySetMapping Name="BusinessRule_Sections">
+            <EntityTypeMapping TypeName="PalinoiaModel.BusinessRule_Sections">
+              <MappingFragment StoreEntitySet="BusinessRule_Sections">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_BusinessRuleID" ColumnName="fk_BusinessRuleID" />
+                <ScalarProperty Name="fk_SectionID" ColumnName="fk_SectionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessRules">
+            <EntityTypeMapping TypeName="PalinoiaModel.BusinessRule">
+              <MappingFragment StoreEntitySet="BusinessRules">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="fk_StatusID" ColumnName="fk_StatusID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="fk_SectionID" ColumnName="fk_SectionID" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessRules_CustomerServiceMessages">
+            <EntityTypeMapping TypeName="PalinoiaModel.BusinessRules_CustomerServiceMessages">
+              <MappingFragment StoreEntitySet="BusinessRules_CustomerServiceMessages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_BusinessRulesID" ColumnName="fk_BusinessRulesID" />
+                <ScalarProperty Name="fk_CustomerServiceMessagesID" ColumnName="fk_CustomerServiceMessagesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chapters">
+            <EntityTypeMapping TypeName="PalinoiaModel.Chapter">
+              <MappingFragment StoreEntitySet="Chapters">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_ChapterTypeID" ColumnName="fk_ChapterTypeID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerServiceMessage_Sections">
+            <EntityTypeMapping TypeName="PalinoiaModel.CustomerServiceMessage_Sections">
+              <MappingFragment StoreEntitySet="CustomerServiceMessage_Sections">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_CustomerServiceMessageID" ColumnName="fk_CustomerServiceMessageID" />
+                <ScalarProperty Name="fk_SectionID" ColumnName="fk_SectionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerServiceMessages">
+            <EntityTypeMapping TypeName="PalinoiaModel.CustomerServiceMessage">
+              <MappingFragment StoreEntitySet="CustomerServiceMessages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="fk_StatusID" ColumnName="fk_StatusID" />
+                <ScalarProperty Name="fk_CSMTypeID" ColumnName="fk_CSMTypeID" />
+                <ScalarProperty Name="fk_CSMResponseTypeID" ColumnName="fk_CSMResponseTypeID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="fk_SectionID" ColumnName="fk_SectionID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Defect_BusinessRules">
+            <EntityTypeMapping TypeName="PalinoiaModel.Defect_BusinessRules">
+              <MappingFragment StoreEntitySet="Defect_BusinessRules">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_DefectID" ColumnName="fk_DefectID" />
+                <ScalarProperty Name="fk_BusinessRuleID" ColumnName="fk_BusinessRuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Defect_Comments">
+            <EntityTypeMapping TypeName="PalinoiaModel.Defect_Comments">
+              <MappingFragment StoreEntitySet="Defect_Comments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_DefectID" ColumnName="fk_DefectID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Defect_CustomerServiceMessages">
+            <EntityTypeMapping TypeName="PalinoiaModel.Defect_CustomerServiceMessages">
+              <MappingFragment StoreEntitySet="Defect_CustomerServiceMessages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_DefectID" ColumnName="fk_DefectID" />
+                <ScalarProperty Name="fk_CustomerServiceMessageID" ColumnName="fk_CustomerServiceMessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Defect_TestCases">
+            <EntityTypeMapping TypeName="PalinoiaModel.Defect_TestCases">
+              <MappingFragment StoreEntitySet="Defect_TestCases">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_DefectID" ColumnName="fk_DefectID" />
+                <ScalarProperty Name="fk_TestCaseID" ColumnName="fk_TestCaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Defects">
+            <EntityTypeMapping TypeName="PalinoiaModel.Defect">
+              <MappingFragment StoreEntitySet="Defects">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_DefectPriorityID" ColumnName="fk_DefectPriorityID" />
+                <ScalarProperty Name="fk_DefectStatusID" ColumnName="fk_DefectStatusID" />
+                <ScalarProperty Name="fk_DefectTypeID" ColumnName="fk_DefectTypeID" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="DefectName" ColumnName="DefectName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Document_Chapters">
+            <EntityTypeMapping TypeName="PalinoiaModel.Document_Chapters">
+              <MappingFragment StoreEntitySet="Document_Chapters">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SeqNum" ColumnName="SeqNum" />
+                <ScalarProperty Name="fk_DocumentID" ColumnName="fk_DocumentID" />
+                <ScalarProperty Name="fk_ChapterID" ColumnName="fk_ChapterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentImages">
+            <EntityTypeMapping TypeName="PalinoiaModel.DocumentImage">
+              <MappingFragment StoreEntitySet="DocumentImages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="PalinoiaModel.Document">
+              <MappingFragment StoreEntitySet="Documents">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_DocumentType" ColumnName="fk_DocumentType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Histories">
+            <EntityTypeMapping TypeName="PalinoiaModel.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_PalinoiaObjectID" ColumnName="fk_PalinoiaObjectID" />
+                <ScalarProperty Name="RecordID" ColumnName="RecordID" />
+                <ScalarProperty Name="fk_PalinoiaFieldID" ColumnName="fk_PalinoiaFieldID" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="OldValue" ColumnName="OldValue" />
+                <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+                <ScalarProperty Name="UserID_UpdatedBy" ColumnName="UserID_UpdatedBy" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_ChapterType">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_ChapterType">
+              <MappingFragment StoreEntitySet="lkup_ChapterType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_CSMResponseType">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_CSMResponseType">
+              <MappingFragment StoreEntitySet="lkup_CSMResponseType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_CSMType">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_CSMType">
+              <MappingFragment StoreEntitySet="lkup_CSMType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_DefectPriority">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_DefectPriority">
+              <MappingFragment StoreEntitySet="lkup_DefectPriority">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Importance" ColumnName="Importance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_DefectStatus">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_DefectStatus">
+              <MappingFragment StoreEntitySet="lkup_DefectStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_DefectType">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_DefectType">
+              <MappingFragment StoreEntitySet="lkup_DefectType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_DocumentType">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_DocumentType">
+              <MappingFragment StoreEntitySet="lkup_DocumentType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="IncludeBRCSMSummaryTable" ColumnName="IncludeBRCSMSummaryTable" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_PalinoiaFields">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_PalinoiaFields">
+              <MappingFragment StoreEntitySet="lkup_PalinoiaFields">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_PalinoiaObjects">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_PalinoiaObjects">
+              <MappingFragment StoreEntitySet="lkup_PalinoiaObjects">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_SearchDataTypes">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_SearchDataTypes">
+              <MappingFragment StoreEntitySet="lkup_SearchDataTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_SearchObjects">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_SearchObjects">
+              <MappingFragment StoreEntitySet="lkup_SearchObjects">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_SearchTypeID" ColumnName="fk_SearchTypeID" />
+                <ScalarProperty Name="fk_SearchDataTypeID" ColumnName="fk_SearchDataTypeID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="SearchColumn" ColumnName="SearchColumn" />
+                <ScalarProperty Name="ResultDisplayPriority" ColumnName="ResultDisplayPriority" />
+                <ScalarProperty Name="XREF_Table" ColumnName="XREF_Table" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_SearchOperators">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_SearchOperators">
+              <MappingFragment StoreEntitySet="lkup_SearchOperators">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_SearchTypes">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_SearchTypes">
+              <MappingFragment StoreEntitySet="lkup_SearchTypes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_Sections">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_Sections">
+              <MappingFragment StoreEntitySet="lkup_Sections">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_Status">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_Status">
+              <MappingFragment StoreEntitySet="lkup_Status">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="DisplayInChapterSummary" ColumnName="DisplayInChapterSummary" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lkup_TestStatus">
+            <EntityTypeMapping TypeName="PalinoiaModel.lkup_TestStatus">
+              <MappingFragment StoreEntitySet="lkup_TestStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TEXT" ColumnName="TEXT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SQLITEADMIN_QUERIES">
+            <EntityTypeMapping TypeName="PalinoiaModel.SQLITEADMIN_QUERIES">
+              <MappingFragment StoreEntitySet="SQLITEADMIN_QUERIES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SQL" ColumnName="SQL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestCase_BusinessRules">
+            <EntityTypeMapping TypeName="PalinoiaModel.TestCase_BusinessRules">
+              <MappingFragment StoreEntitySet="TestCase_BusinessRules">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_TestCaseID" ColumnName="fk_TestCaseID" />
+                <ScalarProperty Name="fk_BusinessRuleID" ColumnName="fk_BusinessRuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestCase_Documents">
+            <EntityTypeMapping TypeName="PalinoiaModel.TestCase_Documents">
+              <MappingFragment StoreEntitySet="TestCase_Documents">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_TestCaseID" ColumnName="fk_TestCaseID" />
+                <ScalarProperty Name="fk_DocumentID" ColumnName="fk_DocumentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestCase_PreConditions">
+            <EntityTypeMapping TypeName="PalinoiaModel.TestCase_PreConditions">
+              <MappingFragment StoreEntitySet="TestCase_PreConditions">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_TestCaseID" ColumnName="fk_TestCaseID" />
+                <ScalarProperty Name="PreConditionTestCaseID" ColumnName="PreConditionTestCaseID" />
+                <ScalarProperty Name="SeqNum" ColumnName="SeqNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestCase_TestSteps">
+            <EntityTypeMapping TypeName="PalinoiaModel.TestCase_TestSteps">
+              <MappingFragment StoreEntitySet="TestCase_TestSteps">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SeqNum" ColumnName="SeqNum" />
+                <ScalarProperty Name="fk_TestCaseID" ColumnName="fk_TestCaseID" />
+                <ScalarProperty Name="fk_TestStepID" ColumnName="fk_TestStepID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestCases">
+            <EntityTypeMapping TypeName="PalinoiaModel.TestCas">
+              <MappingFragment StoreEntitySet="TestCases">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_lkup_SectionID" ColumnName="fk_lkup_SectionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="fk_TestStatusID" ColumnName="fk_TestStatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestResults">
+            <EntityTypeMapping TypeName="PalinoiaModel.TestResult">
+              <MappingFragment StoreEntitySet="TestResults">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_TestCaseID" ColumnName="fk_TestCaseID" />
+                <ScalarProperty Name="fk_TestStepID" ColumnName="fk_TestStepID" />
+                <ScalarProperty Name="fk_TestStatusID" ColumnName="fk_TestStatusID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="failedBusinessRuleID" ColumnName="failedBusinessRuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestStep_BusinessRules">
+            <EntityTypeMapping TypeName="PalinoiaModel.TestStep_BusinessRules">
+              <MappingFragment StoreEntitySet="TestStep_BusinessRules">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="fk_TestStepID" ColumnName="fk_TestStepID" />
+                <ScalarProperty Name="fk_BusinessRuleID" ColumnName="fk_BusinessRuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestSteps">
+            <EntityTypeMapping TypeName="PalinoiaModel.TestStep">
+              <MappingFragment StoreEntitySet="TestSteps">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

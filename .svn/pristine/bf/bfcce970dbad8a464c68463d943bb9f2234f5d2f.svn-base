@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="applicationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Application_Errors">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fk_UserID" Type="Int64" Nullable="false" />
+    <Property Name="fk_ProjectID" Type="Int64" Nullable="false" />
+    <Property Name="Source" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="InnerException" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="StackTrace" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Application_History">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fk_ApplicationObjectID" Type="Int64" />
+    <Property Name="RecordID" Type="Int64" />
+    <Property Name="fk_ApplicationFieldID" Type="Int64" />
+    <Property Name="Action" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="OldValue" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="NewValue" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="UserID_UpdatedBy" Type="Int64" />
+    <Property Name="DateUpdated" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="lkup_ApplicationFields">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lkup_ApplicationObjects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TEXT" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lkup_Features">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Role_Features" Relationship="Self.FK_Role_Features_0_0" FromRole="lkup_Features" ToRole="Role_Features" />
+  </EntityType>
+  <EntityType Name="lkup_Roles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Role_Features" Relationship="Self.FK_Role_Features_1_0" FromRole="lkup_Roles" ToRole="Role_Features" />
+  </EntityType>
+  <EntityType Name="Navigation_Menu_Items">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int64" />
+    <Property Name="NodeID" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="FeatureID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="Palinoia_Projects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DataSource" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role_Features">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fk_RoleID" Type="Int64" Nullable="false" />
+    <Property Name="fk_FeatureID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="lkup_Features" Relationship="Self.FK_Role_Features_0_0" FromRole="Role_Features" ToRole="lkup_Features" />
+    <NavigationProperty Name="lkup_Roles" Relationship="Self.FK_Role_Features_1_0" FromRole="Role_Features" ToRole="lkup_Roles" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fk_UserRoleID" Type="Int64" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleInitial" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PW" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fk_ProjectID" Type="Int64" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="UpdatedBy" Type="Int64" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Role_Features_0_0">
+    <End Role="lkup_Features" Type="Self.lkup_Features" Multiplicity="1" />
+    <End Role="Role_Features" Type="Self.Role_Features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkup_Features">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Role_Features">
+        <PropertyRef Name="fk_FeatureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_Features_1_0">
+    <End Role="lkup_Roles" Type="Self.lkup_Roles" Multiplicity="1" />
+    <End Role="Role_Features" Type="Self.Role_Features" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lkup_Roles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Role_Features">
+        <PropertyRef Name="fk_RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="applicationEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Application_Errors" EntityType="Self.Application_Errors" />
+    <EntitySet Name="Application_History" EntityType="Self.Application_History" />
+    <EntitySet Name="lkup_ApplicationFields" EntityType="Self.lkup_ApplicationFields" />
+    <EntitySet Name="lkup_ApplicationObjects" EntityType="Self.lkup_ApplicationObjects" />
+    <EntitySet Name="lkup_Features" EntityType="Self.lkup_Features" />
+    <EntitySet Name="lkup_Roles" EntityType="Self.lkup_Roles" />
+    <EntitySet Name="Navigation_Menu_Items" EntityType="Self.Navigation_Menu_Items" />
+    <EntitySet Name="Palinoia_Projects" EntityType="Self.Palinoia_Projects" />
+    <EntitySet Name="Role_Features" EntityType="Self.Role_Features" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Role_Features_0_0" Association="Self.FK_Role_Features_0_0">
+      <End Role="lkup_Features" EntitySet="lkup_Features" />
+      <End Role="Role_Features" EntitySet="Role_Features" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_Features_1_0" Association="Self.FK_Role_Features_1_0">
+      <End Role="lkup_Roles" EntitySet="lkup_Roles" />
+      <End Role="Role_Features" EntitySet="Role_Features" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

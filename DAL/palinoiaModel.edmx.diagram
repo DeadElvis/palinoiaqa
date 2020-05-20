@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b866567228ed42e09fec58e0a4074ee1" Name="Diagram1">
+        <EntityTypeShape EntityType="PalinoiaModel.BusinessRule_Sections" Width="1.5" PointX="13" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.BusinessRule" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.BusinessRules_CustomerServiceMessages" Width="1.5" PointX="10" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.Chapter" Width="1.5" PointX="7.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.CustomerServiceMessage_Sections" Width="1.5" PointX="10" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.CustomerServiceMessage" Width="1.5" PointX="7.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.Defect_BusinessRules" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.Defect_Comments" Width="1.5" PointX="5.25" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.Defect_CustomerServiceMessages" Width="1.5" PointX="10" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.Defect_TestCases" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.Defect" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.Document_Chapters" Width="1.5" PointX="9.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.DocumentImage" Width="1.5" PointX="11.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.Document" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.History" Width="1.5" PointX="12.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_ChapterType" Width="1.5" PointX="12.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_CSMResponseType" Width="1.5" PointX="13.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_CSMType" Width="1.5" PointX="13.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_DefectPriority" Width="1.5" PointX="14.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_DefectStatus" Width="1.5" PointX="14.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_DefectType" Width="1.5" PointX="8.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_DocumentType" Width="1.5" PointX="10.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_PalinoiaFields" Width="1.5" PointX="15.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_PalinoiaObjects" Width="1.5" PointX="15.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_SearchDataTypes" Width="1.5" PointX="15.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_SearchObjects" Width="1.5" PointX="15.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_SearchOperators" Width="1.5" PointX="16.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_SearchTypes" Width="1.5" PointX="16.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_Sections" Width="1.5" PointX="7.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_Status" Width="1.5" PointX="12.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.lkup_TestStatus" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.SQLITEADMIN_QUERIES" Width="1.5" PointX="0.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.TestCase_BusinessRules" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.TestCase_Documents" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.TestCase_PreConditions" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.TestCase_TestSteps" Width="1.5" PointX="17.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.TestCas" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.TestResult" Width="1.5" PointX="8.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.TestStep_BusinessRules" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PalinoiaModel.TestStep" Width="1.5" PointX="6" PointY="18.5" IsExpanded="true" />
+        <AssociationConnector Association="PalinoiaModel.FK_BusinessRule_Sections_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_BusinessRule_Sections_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_BusinessRules_CustomerServiceMessages_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_Defect_BusinessRules_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_TestCase_BusinessRules_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_TestStep_BusinessRules_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_BusinessRules_CustomerServiceMessages_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_CustomerServiceMessage_Sections_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_CustomerServiceMessage_Sections_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_Defect_CustomerServiceMessages_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_Defect_BusinessRules_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_Defect_Comments_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_Defect_CustomerServiceMessages_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_Defect_TestCases_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_Defect_TestCases_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_TestCase_Documents_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_TestCases_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_TestCase_BusinessRules_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_TestCase_Documents_1_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_TestCase_PreConditions_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="PalinoiaModel.FK_TestStep_BusinessRules_0_0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
